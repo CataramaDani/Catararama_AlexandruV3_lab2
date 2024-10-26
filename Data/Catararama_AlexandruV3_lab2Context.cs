@@ -17,5 +17,6 @@ namespace Catararama_AlexandruV3_lab2.Data
         public DbSet<Catararama_AlexandruV3_lab2.Models.Book> Book { get; set; } = default!;
         public DbSet<Catararama_AlexandruV3_lab2.Models.Publisher> Publisher { get; set; } = default!;
         public DbSet<Catararama_AlexandruV3_lab2.Models.Authors> Authors { get; set; } = default!;
+        public DbSet<Catararama_AlexandruV3_lab2.Models.Category> Category { get; set; } = default!;
     }
 }

@@ -4,6 +4,7 @@ using Catararama_AlexandruV3_lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Catararama_AlexandruV3_lab2.Migrations
 {
     [DbContext(typeof(Catararama_AlexandruV3_lab2Context))]
-    partial class Catararama_AlexandruV3_lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20241024122517_Pasul22")]
+    partial class Pasul22
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

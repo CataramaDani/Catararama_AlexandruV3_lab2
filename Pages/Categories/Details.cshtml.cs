@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Catararama_AlexandruV3_lab2.Data;
 using Catararama_AlexandruV3_lab2.Models;
 
-namespace Catararama_AlexandruV3_lab2.Pages.Books
+namespace Catararama_AlexandruV3_lab2.Pages.Categories
 {
     public class DetailsModel : PageModel
     {
@@ -19,8 +19,7 @@ namespace Catararama_AlexandruV3_lab2.Pages.Books
             _context = context;
         }
 
-        public Book Book { get; set; }
-
+        public Category Category { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,14 +28,14 @@ namespace Catararama_AlexandruV3_lab2.Pages.Books
                 return NotFound();
             }
 
-            var book = await _context.Book.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).FirstOrDefaultAsync(m => m.ID == id);
-            if (book == null)
+            var category = await _context.Category.FirstOrDefaultAsync(m => m.ID == id);
+            if (category == null)
             {
                 return NotFound();
             }
             else
             {
-                Book = book;
+                Category = category;
             }
             return Page();
         }
