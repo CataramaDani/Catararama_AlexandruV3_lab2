@@ -20,12 +20,18 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Category) {
-        <tr>
+@foreach (var item in Model.CategoryData.Categories) {
+            string SelectedRow = "";
+            if(item.ID == Model.CategoryID)
+            {
+                SelectedRow = "Table-succes";
+            }
+            <tr class="@SelectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
+                    <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
@@ -34,3 +40,30 @@
 }
     </tbody>
 </table>
+@if (Model.CategoryData.Books != null)
+{
+    <hr />
+    <h3>Books in selected Category</h3>
+    <table class="table">
+        @foreach (var book in Model.CategoryData.Books)
+        {
+           <tr>
+               <td>
+                    @book.Title by @book.Authors.FullName
+                    | <strong> All Book categories:</strong>
+                    @if (book.BookCategories != null && book.BookCategories.Any())
+                    {
+                        foreach (var bookCategory in book.BookCategories)
+                        {
+                            <span>@bookCategory.Category.CategoryName</span>
+                            @if(bookCategory != book.BookCategories.Last())
+                            {
+                                @:<span></span>
+                            }
+                        }
+                    }
+               </td>
+           </tr>
+        }
+    </table>
+}
