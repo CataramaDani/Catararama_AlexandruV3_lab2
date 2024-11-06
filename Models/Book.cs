@@ -17,6 +17,7 @@ namespace Catararama_AlexandruV3_lab2.Models
         public Publisher? Publisher { get; set; }
         public int? AuthorsID { get; set; }
         public Authors? Authors { get; set; }
+        public ICollection<Borrowing>? Borrowings { get; set; }
         public ICollection<BookCategory>? BookCategories { get; set; }
     }
 }
