@@ -9,9 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Catararama_AlexandruV3_lab2.Data;
 using Catararama_AlexandruV3_lab2.Models;
 using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Catararama_AlexandruV3_lab2.Pages.Books
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : BookCategoriesPageModel
     {
         private readonly Catararama_AlexandruV3_lab2.Data.Catararama_AlexandruV3_lab2Context _context;
